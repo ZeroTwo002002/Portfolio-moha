@@ -51,10 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupère la valeur du champ 'mail' du formulaire et la stocke dans la variable $email.
 
     $subject = verifdonnées($_POST['subject']);
-    // Récupère la valeur du champ 'subject' du formulaire et la stocke dans la variable $subject.
+    // Récupère la valeur du champ 'subject' du formulaire et la stocke dans la variable $subject
 
     $message = verifdonnées($_POST['message']);
-    // Récupère la valeur du champ 'message' du formulaire et la stocke dans la variable $message.
+    // Récupère la valeur du champ 'message' du formulaire et la stocke dans la variable $message
 $mail = new PHPMailer(true);
 
 try {
