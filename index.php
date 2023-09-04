@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="body-index">
     
 <header>
     <div class="user">
@@ -210,7 +210,7 @@
                 <h3> <i class="fas fa-phone"></i>06.05.55.76.09 </h3>
                 <h3> <i class="fas fa-map-mark-alt"></i>Marseille, France - 13001 </h3>
             </div>
-        </div>
+</div>
 
         <form id="contact-form" method="post" action="mail.php">
 
@@ -219,7 +219,6 @@
             <input type="text" name="subject" placeholder="subject" class="box" id="subject">
             <textarea cols="30" rows="10" class="box message" name="message" placeholder="message" id="message"></textarea>
             <button type="submit" class="btn"> send <i class="fas fa-paper-plane"></i></button>
-            <a href="recup.php">ICI</a>
         </form>
     </div>
 

@@ -39,10 +39,16 @@ html::-webkit-scrollbar-thumb {
     background: var(--yellow);
 }
 
-body {
+#body-index{
 background: #111;
 overflow-x: hidden;
 padding-left: 35rem;
+}
+
+#body-mail {
+    background: #111;
+    overflow-x: hidden;
+
 }
 
 section {
@@ -365,6 +371,25 @@ color: var(--yellow);
 .contact .row .content .info h3 i {
     padding-right: 1rem;
     color: var(--yellow);
+}
+
+/* Mail page */
+/* CSS pour centrer verticalement et horizontalement la carte */
+.min-vh-100 {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+}
+
+
+.large-text {
+    font-size: 24px; /* Vous pouvez ajuster la taille en fonction de vos préférences */
+}
+.bold-text {
+    font-weight: bolder; /* Pour rendre le texte en gras */
+}
+.small-text {
+    font-size: 17px; /* Vous pouvez ajuster la taille en fonction de vos préférences */
 }
 
 /* MEDIA QUERRIES */

@@ -1,4 +1,31 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation d'envoi de mail</title>
+    <!-- Inclure les fichiers CSS de Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="body-mail">
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-md-6 row-mail">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title large-text bold-text">Mail envoyé avec succès</h5>
+                    <p class="card-text small-text">Votre e-mail a été envoyé avec succès.</p>
+                    <a href="index.php" class="btn btn-primary">Retour à l'accueil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -12,6 +39,8 @@ function verifdonnées($data) {
     $data = htmlspecialchars($data);
     return $data;
   }
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérifier que la demande HTTP est une méthode POST, ce qui signifie qu'un formulaire a été soumis.
     // Récupérer les données du formulaire
@@ -26,10 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $message = verifdonnées($_POST['message']);
     // Récupère la valeur du champ 'message' du formulaire et la stocke dans la variable $message.
-var_dump(verifdonnées($_POST['nom']));
 $mail = new PHPMailer(true);
 
-include_once('config_bdd.php');
 try {
     //Server settings
     $mail->isSMTP();
@@ -46,31 +73,14 @@ try {
         $mail->Subject = 'Nouveau message depuis le formulaire';
         $mail->Body = "Nom : $nom<br>Email : $email<br>Sujet : $subject<br> Message : $message"; // Vous pouvez ajouter d'autres informations
         $mail->send();
-        echo 'E-mail envoyé avec succès';
-        $stmt = $conn->prepare("INSERT INTO form (nom, mail, subject, message) VALUES (:nom, :mail, :subject, :message)");
-
-    // Les valeurs à insérer
-    $nom = $_POST['nom'];
-    $email = $_POST['mail'];
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
-
-    // Lier les valeurs aux paramètres de la requête
-    $stmt->bindParam(':nom', $nom);
-    $stmt->bindParam(':mail', $email);
-    $stmt->bindParam(':subject', $subject);
-    $stmt->bindParam(':message', $message);
-
-    // Exécuter la requête d'insertion
-    $stmt->execute();
-    echo "Données insérées avec succès";
-} catch (Exception $e) {
-    echo "Erreur lors de l'envoi de l'e-mail : {$mail->ErrorInfo}";
-} catch (PDOException $e) {
-    echo "Erreur de connexion à la base de données : " . $e->getMessage();
+    } catch (Exception $e) {
+        echo "Erreur lors de l'envoi de l'e-mail : {$mail->ErrorInfo}";
+    }
 }
-}
-// Fermer la connexion à la base de données
-$connexion = null;
-
 ?>
+    <!-- Inclure les fichiers JavaScript de Bootstrap (jQuery et Popper.js sont nécessaires) -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
